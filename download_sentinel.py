@@ -271,7 +271,7 @@ def download_with_retry(data, filename, retries=5, sleep_time=3):
                 return False
             else:
 #                print(f"Trail {attempt + 1} failed: {e}")
-                print(f"Trail {attempt + 1} failed")
+                print(f"Trial {attempt + 1} failed")
                 wait_time = sleep_time * (attempt + 1)
                 print(f"-- [Erreur 429]. Wait {wait_time} seconds to start again...")
                 time.sleep(wait_time)
