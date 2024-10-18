@@ -71,7 +71,8 @@ def download_S2(path_geojson, output_folder, startday, endday, bands=["B01", "B0
         download_S2_synthesis(path_geojson,output_folder,
                     startday,endday,
                     bands=bands,
-                    visu=visu)
+                    visu=visu,
+                    max_cloud_cover=max_cloud_cover)
     else:
         download_S2_timeseries(path_geojson, output_folder,
                                startday, endday, bands=bands,
@@ -81,7 +82,7 @@ def download_S2(path_geojson, output_folder, startday, endday, bands=["B01", "B0
 def download_S2_synthesis(path_geojson,output_folder,
                 startday,endday,
                 bands=["B01","B02","B03","B04","B05","B06","B07","B8A", "B09", "B11", "B12"],
-                visu=False):
+                visu=False,max_cloud_cover=35):
     """
     - path_geojson = path to geojson (see https://geojson.io/)
     - name folder : name of folder to store data
@@ -90,6 +91,8 @@ def download_S2_synthesis(path_geojson,output_folder,
     - bands : a list of strings among default values :
         ["B01","B02","B03","B04","B05","B06","B07","B8A", "B09", "B11", "B12"]
     - visu : (def False) to visualize info
+    - max_cloud_cover (def 35):
+          maxium cloud coverage in %
 
 
 
@@ -136,7 +139,7 @@ def download_S2_synthesis(path_geojson,output_folder,
         temporal_extent = ["2021-02-01", "2021-04-30"],
         #bands=["B02", "B04", "B08"],
         bands=bands,
-        max_cloud_cover=85,
+        max_cloud_cover=max_cloud_cover,
     )
 
     data=[]
