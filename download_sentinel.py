@@ -132,11 +132,19 @@ def download_S2_synthesis(path_geojson,output_folder,
 
     if visu:
         print("Spatial extent:", spatial_extent)
+
+
+
+    date_obj = time.strptime(startday, "%Y%m%d")
+    startday = time.strftime("%Y-%m-%d", date_obj)
+    date_obj = time.strptime(endday, "%Y%m%d")
+    endday = time.strftime("%Y-%m-%d", date_obj)
+    
     
     datacube = connection.load_collection(
         "SENTINEL2_L2A",
         spatial_extent=spatial_extent,
-        temporal_extent = ["2021-02-01", "2021-04-30"],
+        temporal_extent = [startday,endday],
         #bands=["B02", "B04", "B08"],
         bands=bands,
         max_cloud_cover=max_cloud_cover,
