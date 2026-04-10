@@ -245,7 +245,7 @@ def download_S2_timeseries(path_geojson, output_folder, startday, endday, bands=
         except openeo.rest.OpenEoApiError as e:
             if 'NoDataAvailable' in str(e):
                 # Gérer l'erreur "NoDataAvailable" et passer à la date suivante
-                print(f"Aucune donnée disponible pour la date {current_date.strftime('%Y-%m-%d')}. Passage à la date suivante.")
+                print(f"No available data for day {current_date.strftime('%Y-%m-%d')}. Moce to next day à la date suivante.")
                 # Supprimer le dossier si aucune donnée n'a été téléchargée
                 folder_date = os.path.join(output_folder, current_date.strftime('%Y%m%d'))
                 if os.path.exists(folder_date) and not os.listdir(folder_date):
